@@ -1,0 +1,60 @@
+<!-- Big Screen -->
+<div *ngIf="bigScreen" class="page" style="display: grid; grid-template-columns: 500px calc(50% - 250px) calc(50% - 250px);">
+    <app-schock-bar></app-schock-bar>
+    <div style="display: grid; margin-top: 170px; margin-left: 10px; justify-items: center;">
+        <app-signup-form style="min-width: 300px; max-width: 75%;"></app-signup-form>
+    </div>
+    <div style="display: grid; margin-top: 170px; margin-right: 10px; justify-items: center;">
+        <app-login-form style="min-width: 300px; max-width: 75%;"></app-login-form>
+    </div>
+</div>
+<!-- Medium Screen -->
+<div *ngIf="mediumScreen" class="page" style="display: grid; grid-template-columns: minmax(250px, 500px) auto">
+    <app-schock-bar></app-schock-bar>
+    <div style="display: grid; margin: 170px 10px; justify-items: center;">
+        <div *ngIf="step==='SignUp'" style="min-width: 300px; max-width: 75%;">
+            <app-signup-form></app-signup-form>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
+                <u class="link" (click)="showLogin()">Back to login</u>
+            </div>
+        </div>
+        <div *ngIf="step==='SignIn'" style="min-width: 300px; max-width: 75%;">
+            <app-login-form></app-login-form>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
+                <b>You don't have an account?</b>
+                <u class="link" (click)="showRegister()">Create one!</u>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Small Screen -->
+<div *ngIf="smallScreen" class="page" style="display: grid; justify-items: center;">
+    <div *ngIf="step==='Shocklogic'">
+        <app-schock-bar></app-schock-bar>
+        <div (click)="showLogin()" style="display: flex; flex-direction: column; align-items: center; position: relative; top: -150px; cursor: pointer;">
+            <span style="color: white; font-weight: bold;">Sign in</span>
+            <i style="color: white;" class="fa-solid fa-chevron-down"></i>
+        </div>
+    </div>
+    <div *ngIf="step==='SignUp'" style="min-width: 300px; max-width: 75%; margin-top: 170px;">
+        <app-signup-form></app-signup-form>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
+            <u class="link" (click)="showLogin()">Back to login</u>
+            <div (click)="step = 'Shocklogic'" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                <i class="fa-solid fa-chevron-up"></i>
+                <u class="link">Start</u>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="step==='SignIn'" style="min-width: 300px; max-width: 75%; margin-top: 170px;">
+        <app-login-form></app-login-form>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
+            <b>You don't have an account?</b>
+            <u class="link" (click)="showRegister()">Create one!</u>
+            <div (click)="step = 'Shocklogic'" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                <i class="fa-solid fa-chevron-up"></i>
+                <u class="link">Start</u>
+            </div>
+        </div>
+    </div>
+</div>

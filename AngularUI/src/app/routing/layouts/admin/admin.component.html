@@ -1,0 +1,16 @@
+<div class="page">
+    <app-schock-header (accountClick)="onClick($event)"></app-schock-header>
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav #sidenav [mode]="sidenavMode" opened
+            style="background-color: #1d2132; min-width: 250px; min-height: calc(100% - 96px);">
+            <hr style="color: white; margin: 40px 20px 20px 20px;">
+            <a mat-icon-button (click)="closeSession()" style="padding: 20px;">
+                <i style="color: white; margin-top: 7px;" class="fa-solid fa-right-from-bracket"></i>
+                <strong style="color: white;">Logout</strong>
+            </a>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet style="display: none;"></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

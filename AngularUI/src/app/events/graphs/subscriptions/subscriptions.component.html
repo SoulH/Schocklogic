@@ -1,0 +1,45 @@
+<div style="width: 800px;">
+    <!-- Form Header -->
+    <div class="form-header">
+        <h2>Subscription metrics</h2>
+        <button mat-icon-button (click)="onCloseForm();" 
+                style="box-shadow: none; min-width: 30px; min-height: 30px;">
+            <i class="fa-solid fa-xmark" style="font-size: large;"></i>
+        </button>
+    </div>
+    <!-- Form Content -->
+    <h2>{{formData.name}}</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()"
+        style="display: flex; justify-content: space-between;">
+        <div style="display: flex; gap: 10px;">
+            <mat-form-field appearance="outline">
+                <mat-label>Start</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="start">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>End</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="end">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Unit</mat-label>
+                <mat-select formControlName="unit">
+                    <mat-option value="y">Years</mat-option>
+                    <mat-option value="m">Months</mat-option>
+                    <mat-option value="w">Weeks</mat-option>
+                    <mat-option value="d">Days</mat-option>
+                    <mat-option value="h">Hours</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <button type="submit" mat-flat-button color="accent" style="color: white; margin-bottom: 20px;">Generate</button>
+    </form>
+    <div class="graph" style="margin-top: 70px;">
+        <canvas id="subscriptions">{{chart}}</canvas>
+    </div>
+</div>

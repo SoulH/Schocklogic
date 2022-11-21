@@ -1,0 +1,60 @@
+<form [formGroup]="form" (ngSubmit)="submit()" style="display: flex; flex-direction: column; gap: 20px;">
+    <h2 syle="font-weight: bold;">Create an account</h2>
+    <p>Suit in culpa qui officia deserunt mollit anim id est laborum.</p> 
+    <div *ngIf="unfillRequiredFields" class="form-warn-msg">
+        Please fill all the required fields
+    </div>
+    <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput [errorStateMatcher]="matcher" placeholder="First name" formControlName="first_name"/>
+        <mat-error *ngIf="form.get('first_name')?.hasError('minlength')">
+            First name too short
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Family name</mat-label>
+        <input matInput [errorStateMatcher]="matcher" placeholder="Family name" formControlName="last_name"/>
+        <mat-error *ngIf="form.get('last_name')?.hasError('minlength')">
+            Family name too short
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput [errorStateMatcher]="matcher"  placeholder="Email" formControlName="email"/>
+        <mat-error *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')">
+            Invalid email address
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [errorStateMatcher]="matcher"
+                formControlName="password" placeholder="Password"
+                [type]="passwordVisible ? 'text' : 'password'"/>
+        <mat-icon class="fa-solid fa-eye" matSuffix 
+                style="color: #777; font-size: medium;"
+                *ngIf="!passwordVisible" (click)="passwordVisible = true">
+        </mat-icon>
+        <mat-icon class="fa-solid fa-eye-slash" matSuffix 
+                style="color: #777; font-size: medium;"
+                *ngIf="passwordVisible" (click)="passwordVisible = false">
+        </mat-icon>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+            Password too short, use 8 characters at least
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.getError('pattern')?.requiredPattern?.includes('d')">
+            Include one number in your password at least
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.getError('pattern')?.requiredPattern?.includes('a-z')">
+            Use lower case letters in your password
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.getError('pattern')?.requiredPattern?.includes('A-Z')">
+            Use upper case letters in your password
+        </mat-error>
+    </mat-form-field>
+    
+    <span>Please do not use special characters for your password (eg #, $, @, &).</span>
+    <button mat-flat-button color="accent" type="submit"
+            style="margin-top: 50px; padding: 10px; color: white; font-weight: bold;">
+            Sign up
+    </button>
+</form>

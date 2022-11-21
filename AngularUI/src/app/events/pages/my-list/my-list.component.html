@@ -1,0 +1,45 @@
+<div style="padding: 20px;">
+    <div style="display: flex; justify-content: space-between;">
+      <span>Events</span>
+      <div></div>
+    </div>
+    <p style="margin: 40px 0;">Duis sunt sint irure ea laboris laborum aliqua amet irure eu labore dolore qui. Mollit duis sint eiusmod fugiat. Minim cillum consectetur cillum cupidatat.</p>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" style="width: 100%;">
+        <!-- Image -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Promotional image </th>
+          <td mat-cell *matCellDef="let e"> 
+            <div style="display: flex; padding: 10px 20px 10px 0;">
+              <img src="{{e.files[0]}}" style="min-width: 280px; max-width: 480px;"/>
+            </div>
+          </td>
+        </ng-container>
+        <!-- Info -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell [hidden]="hideInfo" *matHeaderCellDef> Event info </th>
+          <td mat-cell [hidden]="hideInfo" *matCellDef="let e">
+            <div style="display: grid; grid-template-columns: 30% auto; gap: 10px; padding: 20px;">
+              <label>Name</label>
+              <span>{{e.name}}</span>
+              <label>Description:</label>
+              <p>{{e.description}}</p>
+              <label>Start:</label>
+              <span>{{e.start}}</span>
+              <label>End:</label>
+              <span>{{e.end}}</span>
+              <label>Location:</label>
+              <p>{{e.address}}</p>
+            </div>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+  
+    
+  

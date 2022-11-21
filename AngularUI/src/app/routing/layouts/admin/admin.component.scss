@@ -1,0 +1,8 @@
+:host ::ng-deep .mat-sidenav-container {
+    min-height: calc(100% - 96px);
+}
+
+:host ::ng-deep .mat-button-wrapper {
+    display: flex; 
+    gap: 10px; 
+}

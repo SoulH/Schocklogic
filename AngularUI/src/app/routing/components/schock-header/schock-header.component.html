@@ -1,0 +1,12 @@
+<div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee;">
+    <div style="display: flex; align-items: center;">
+        <img src="assets/img/logo.png" alt="shocklogic" style="padding: 10px; width: 200px;"/>
+        <div style="width: 40px;"></div>
+        <a mat-button routerLink="/events">Events</a>
+        <a *ngIf="user?.is_superuser" mat-button routerLink="/security">Security</a>
+    </div>
+    <a mat-button (click)="accountClick.emit()" style="height: 50px; padding-top: 9px; margin-right: 20px;">
+        <span style="color: #333;">{{user?.name}}</span>
+        <i class="fa-solid fa-circle-user" style="font-size: 32px;"></i>
+    </a>
+</div>

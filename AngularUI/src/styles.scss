@@ -1,0 +1,116 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$md-mcgpalette1: (
+    50 : #ffeee2,
+    100 : #ffd4b6,
+    200 : #ffb785,
+    300 : #ff9a54,
+    400 : #ff8430,
+    500 : #ff6e0b,
+    600 : #ff660a,
+    700 : #ff5b08,
+    800 : #ff5106,
+    900 : #ff3f03,
+    A100 : #ffffff,
+    A200 : #fff5f2,
+    A400 : #ffcbbf,
+    A700 : #ffb6a6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-mcgpalette0: (
+    50 : #e5e6e8,
+    100 : #bebfc5,
+    200 : #93959f,
+    300 : #676b79,
+    400 : #474b5c,
+    500 : #262b3f,
+    600 : #222639,
+    700 : #1c2031,
+    800 : #171a29,
+    900 : #0d101b,
+    A100 : #5d7eff,
+    A200 : #2a55ff,
+    A400 : #0031f6,
+    A700 : #002cdd,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$AngularUI-primary: mat.define-palette($md-mcgpalette0);
+$AngularUI-accent: mat.define-palette($md-mcgpalette1);
+
+// The warn palette is optional (defaults to red).
+$AngularUI-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$AngularUI-theme: mat.define-light-theme((
+  color: (
+    primary: $AngularUI-primary,
+    accent: $AngularUI-accent,
+    warn: $AngularUI-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($AngularUI-theme);
+
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page { height: 100%; }
+.single-form { display: flex; flex-direction: column; gap: 20px; align-items: center; }
+.form-header { display: flex; align-items: baseline; justify-content: space-between; }
+.form-warn-msg { background-color: #ffebeb; color: red; border-radius: 5px; padding: 10px; }
+input { padding: 10px; border-radius: 5px; background-color: #f2f5f8; border: none; color: #777; line-height: 32px; }
+i { color: #777; }
+h1, h2, h3, h4, h5, h6 { color: #262b3f;  font-size: large; font-weight: bold; }
+.link { color: blue; cursor: pointer; }
+.white-snackbar { background: white; color: #777; font-weight: bold; align-self: center; border: 1px solid #ffb785; border-radius: 10px; }
+.shock-bar { background-color: #1d2132; min-height: 100%; }
